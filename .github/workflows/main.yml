@@ -27,5 +27,6 @@ jobs:
       - name: Build
         run: gcloud builds submit --tag gcr.io/$PROJECT_ID/$APP_ID:$GITHUB_SHA --project=$PROJECT_ID
 
+
       - name: Deploy
         run: gcloud run deploy $APP_ID --image gcr.io/$PROJECT_ID/$APP_ID:$GITHUB_SHA --platform managed --region $RUN_REGION --allow-unauthenticated --max-instances 10 --update-env-vars ASPNETCORE_ENVIRONMENT=Pro,ASPNETCORE_URLS=http://+:8080
